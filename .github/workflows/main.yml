@@ -39,7 +39,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: target/github-actions-springboot-0.0.1-SNAPSHOT.jar
-          remote: blog.imzjw.cn/actions/github-actions-springboot.jar
+          remote: blog.imzjw.cn/actions/github-actions-springboot-0.0.1-SNAPSHOT.jar
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
