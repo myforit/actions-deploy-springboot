@@ -131,7 +131,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: | # 命令中的 & 表示在后台运行进程
-            cd /cicd && docker-compose up -d &
+            cd /cicd && docker-compose -f docker-compose.yml up -d &
           host: ${{env.Host_IP}}
           user: ${{env.Host_Role}}
           pass: ${{env.Host_PWD}}
