@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ActionsController01 {
 
-    @GetMapping("actionsNew")
+    @GetMapping("actionsDockerCompose")
     public String actions() {
-        return "GitHub Actions Docker Pipe Line" +
-                "这种镜像的方式整体打包部署相对速度快" +
-                "简洁，很好移植，也很轻量";
+        return "采用DockerCompose方式部署项目，更加灵活的任务编排！！！";
     }
 }
