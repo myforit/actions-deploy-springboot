@@ -124,5 +124,5 @@ jobs:
           user: ${{env.Host_Role}}
           pass: ${{env.Host_PWD}}
           run:
-            docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
+            docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar &&
             /cicd/compose.sh
