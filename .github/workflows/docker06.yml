@@ -127,7 +127,4 @@ jobs:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
             
       - name: 在服务器上执行 shell 指令
-        run: cd /cicd
-      - name: Run the scripts
-        run: |
-          ./compose.sh
+        run: compose.sh
