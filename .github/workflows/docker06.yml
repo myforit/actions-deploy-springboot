@@ -127,12 +127,7 @@ jobs:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
             
       - name: 在服务器上执行 shell 指令
-        if: always()
-        uses: fifsky/ssh-action@master
-        with:
-          command: | # 命令中的 & 表示在后台运行进程
-            cccd /cicd && docker-compose -f docker-compose.yml up -d &
-          host: ${{env.Host_IP}}
-          user: ${{env.Host_Role}}
-          pass: ${{env.Host_PWD}}
-          args: "-tt"
+        run: cd /cicd
+      - name: Run the scripts
+        run: |
+          ./compose.sh
