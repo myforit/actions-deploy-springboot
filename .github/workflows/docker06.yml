@@ -125,6 +125,8 @@ jobs:
           pass: ${{env.Host_PWD}}
           run:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
-            
+
+      - name: Check out the repository to the runner
+        uses: actions/checkout@v4
       - name: 在服务器上执行 shell 指令
         run: sh /cicd/compose.sh
