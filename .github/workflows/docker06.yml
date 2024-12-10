@@ -126,7 +126,13 @@ jobs:
           run:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
 
+  job:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /cicd
+    steps:
       - name: Check out the repository to the runner
-        uses: actions/checkout@v2
-      - name: 在服务器上执行 shell 指令
-        run: bash ./compose.sh
+        uses: actions/checkout@v4  
+      - name: Run a script
+        run: ./compose.sh
