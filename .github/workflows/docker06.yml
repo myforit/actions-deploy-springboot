@@ -125,12 +125,4 @@ jobs:
           pass: ${{env.Host_PWD}}
           run:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
-
-  job:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Check out the repository to the runner
-        uses: actions/checkout@v4  
-      - name: Run a script
-        run: /cicd/compose.sh
+            /cicd/compose.sh
