@@ -129,4 +129,4 @@ jobs:
       - name: Check out the repository to the runner
         uses: actions/checkout@v2
       - name: 在服务器上执行 shell 指令
-        run: bash /cicd/compose.sh
+        run: bash ./compose.sh
