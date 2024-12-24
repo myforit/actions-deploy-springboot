@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="app-defaults.xml"/>
+    <!--关闭reactive日志，开启netty日志-->
+    <logger name="reactivefeign.client.log" level="INFO"/>
+    <logger name="com.ccbft.config.RestApiServerAutoConfiguration" level="INFO"/>
+    <logger name="io.netty.handler.logging.LoggingHandler" level="DEBUG"/>
+    <logger name="org.springframework.security" level="DEBUG"/>
+</configuration>
