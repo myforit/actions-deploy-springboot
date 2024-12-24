@@ -18,7 +18,7 @@ import java.io.File;
 public class FileDownloadController {
 
 
-        private static final String FILE_DIRECTORY = "/home/ap/huaqing/file/a.txt";
+      private static final String FILE_DIRECTORY = "/home/ap/huaqing/file/a.txt";
 //    private static final String FILE_DIRECTORY = "D:\\fileshare\\c.txt";
 
     private static final Logger logger = LoggerFactory.getLogger(FileDownloadController.class);
