@@ -16,12 +16,13 @@ import java.io.File;
 public class FileDownloadController {
 
 
-    private static final String FILE_DIRECTORY = "/root/huaqing/file/";
+    private static final String FILE_DIRECTORY = "/home/ap/huaqing/file/a.txt";
+//    private static final String FILE_DIRECTORY = "D:\\fileshare\\c.txt";
 
 
-    @GetMapping("/download/{filename:.+}")
-    public ResponseEntity<FileSystemResource> downloadFile(@PathVariable String filename) {
-        File file = new File(FILE_DIRECTORY + filename);
+    @GetMapping("/download/")
+    public ResponseEntity<FileSystemResource> downloadFile() {
+        File file = new File(FILE_DIRECTORY);
 
         if (!file.exists()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
