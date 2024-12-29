@@ -115,7 +115,7 @@ jobs:
           TENCENT_CLOUD_IP: ${{ secrets.TENCENT_CLOUD_IP }}
           TENCENT_CLOUD_USER: ${{ secrets.TENCENT_CLOUD_USER }}
           TENCENT_CLOUD_KEY: ${{ secrets.TENCENT_CLOUD_KEY }}
-          TENCENT_CLOUD_PATH: /var/www/html
+          TENCENT_CLOUD_PATH: /cicd
         run: |
           echo "${{ secrets.TENCENT_CLOUD_KEY }}" > key.pem
           chmod 600 key.pem
