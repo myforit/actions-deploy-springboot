@@ -3,9 +3,9 @@ name: SpringBoot项目部署dockerCompose
 on:
   # 当向分支进行git push时触发该工作流
   workflow_dispatch:
-  #push:
-   # branches:
-    #  - "master"
+  push:
+    branches:
+      - "develop"
   # 当向master分支合并分支时触发该工作流
   pull_request:
     branches:
