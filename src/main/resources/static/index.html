@@ -20,7 +20,7 @@
     document.getElementById('uploadForm').onsubmit = function(event) {
         event.preventDefault();
         const formData = new FormData(this);
-        fetch('actions', {
+        fetch('/upload', {
             method: 'POST',
             body: formData
         }).then(response => response.text())
