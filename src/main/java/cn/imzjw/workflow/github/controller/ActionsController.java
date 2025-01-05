@@ -78,7 +78,7 @@ public class ActionsController {
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename);
             return new ResponseEntity<>(data, headers, HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(""+ e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" " + e);
         }
     }
 }
