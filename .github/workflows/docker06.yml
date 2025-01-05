@@ -5,11 +5,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "master"
+      - "master1"
   # 当向master分支合并分支时触发该工作流
   pull_request:
     branches:
-      - "master"
+      - "master1"
 
 # 工作流具体执行的任务
 jobs:
