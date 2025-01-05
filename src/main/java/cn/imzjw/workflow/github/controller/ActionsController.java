@@ -1,6 +1,5 @@
 package cn.imzjw.workflow.github.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +26,7 @@ public class ActionsController {
     @Value("${upload.dir}")
     private String uploadDir;
     
-    @GetMapping("actions")
+    @PostMapping("actions")
     public ResponseEntity<String> actions(@RequestParam("file") MultipartFile file) {
         try {
             Path path = Paths.get(uploadDir + file.getOriginalFilename());
