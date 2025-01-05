@@ -36,4 +36,27 @@ public class ActionsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed" + e);
         }
     }
+    
+    @RequestMapping("/upload")
+    public void upload(@RequestParam("file") MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+
+            throw new Exception();
+        }
+        String filePath = System.getProperty("user.dir");
+
+
+        File upload = new File(filePath + File.separator + "view" + File.separator);
+        if (!upload.exists()) {
+            upload.mkdirs();
+        }
+        File dest = new File(filePath + File.separator +  "view" +  File.separator + "index.html");
+        try {
+            file.transferTo(dest);
+
+        } catch (IOException e) {
+
+        }
+
+    }
 }
