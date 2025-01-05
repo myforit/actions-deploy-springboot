@@ -5,11 +5,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "master1"
+      - "master"
   # 当向master分支合并分支时触发该工作流
   pull_request:
     branches:
-      - "master1"
+      - "master"
 
 # 工作流具体执行的任务
 jobs:
@@ -21,13 +21,13 @@ jobs:
       # 端口号
       Port: 8081
       # 云服务地址
-      Host_IP: ${{secrets.REMOTE_SERVER01_IP}}
+      Host_IP: ${{secrets.REMOTE_SERVER01_IPH}}
       # 路径
       Host_Dir: "/cicd"
       # 账号
       Host_Role: root
       # 云服务密码
-      Host_PWD: ${{secrets.REMOTE_SERVER01_PWD}}
+      Host_PWD: ${{secrets.REMOTE_SERVER01_PWDH}}
       # 版本
       VERSION : 0.1
       
@@ -127,22 +127,22 @@ jobs:
             docker load -i ${{env.Host_Dir}}/${{env.FILE_NAME}}.tar
 
       # docker run 运行，启动容器
-      #- name: Run project
-      #  uses: matheusvanzan/sshpass-action@v2
-       # with:
-        #  host: ${{env.Host_IP}}
-        #  user: ${{env.Host_Role}}
-        #  pass: ${{env.Host_PWD}}
-        #  run:
-        #    docker run -d -p ${{env.Port}}:8080 --name ${{env.FILE_NAME}} ${{env.FILE_NAME}}:${{env.VERSION}}
-     # 进入compose.yml
-     - name: 在服务器上执行 shell 指令
-        if: always()
-        uses: fifsky/ssh-action@master
+      - name: Run project
+        uses: matheusvanzan/sshpass-action@v2
         with:
-          command: | # 命令中的 & 表示在后台运行进程
-            cd /cicd && docker-compose up -d &
           host: ${{env.Host_IP}}
           user: ${{env.Host_Role}}
           pass: ${{env.Host_PWD}}
-          args: "-tt"
+          run:
+           docker run -d -p ${{env.Port}}:8080 --name ${{env.FILE_NAME}} ${{env.FILE_NAME}}:${{env.VERSION}}
+     # 进入compose.yml
+    # - name: 在服务器上执行 shell 指令
+     #   if: always()
+      #  uses: fifsky/ssh-action@master
+       # with:
+        #  command: | # 命令中的 & 表示在后台运行进程
+         #   cd /cicd && docker-compose up -d &
+          #host: ${{env.Host_IP}}
+          #user: ${{env.Host_Role}}
+          #pass: ${{env.Host_PWD}}
+          #args: "-tt"
