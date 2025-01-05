@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021/6/29 15:10
  */
 @RestController
-public class ActionsController01 {
+public class ActionsController02 {
 
     @GetMapping("actionsDockerCompose12")
     public String actions() {
