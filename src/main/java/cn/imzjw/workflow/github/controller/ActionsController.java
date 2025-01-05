@@ -44,10 +44,11 @@ public class ActionsController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed" + e);
         }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("OK");
     }
     
     @RequestMapping("/upload")
-    public void upload(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
 
             throw new Exception();
@@ -63,8 +64,8 @@ public class ActionsController {
         try {
             file.transferTo(dest);
 
-        } catch (IOException e) {
-
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed"+e);
         }
 
     }
@@ -78,7 +79,7 @@ public class ActionsController {
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename);
             return new ResponseEntity<>(data, headers, HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" " + e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.toString().getBytes());
         }
     }
 }
