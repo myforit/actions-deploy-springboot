@@ -32,8 +32,8 @@ public class ActionsController {
             Path path = Paths.get(uploadDir + file.getOriginalFilename());
             Files.write(path, file.getBytes());
             return ResponseEntity.ok("File uploaded successfully: " + file.getOriginalFilename());
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed" + e);
         }
     }
 }
