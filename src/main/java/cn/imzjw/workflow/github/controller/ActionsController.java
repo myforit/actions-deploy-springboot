@@ -69,7 +69,7 @@ public class ActionsController {
 
     }
 
-    @GetMapping("/download/{filename}")
+    @GetMapping("/files/download/{filename}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable String filename) {
         try {
             Path path = Paths.get(System.getProperty("user.dir") + File.separator +  "view" +  File.separator + "index.html");
