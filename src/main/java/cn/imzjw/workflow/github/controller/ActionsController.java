@@ -10,8 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ActionsController {
 
+    @Value("${upload.dir}")
+    private String uploadDir;
+    
     @GetMapping("actions")
-    public String actions() {
-        return "使用 GitHub Actions 部署至服务器";
+    public ResponseEntity<String> actions(@RequestParam("file") MultipartFile file) {
+        try {
+            Path path = Paths.get(uploadDir + file.getOriginalFilename());
+            Files.write(path, file.getBytes());
+            return ResponseEntity.ok("File uploaded successfully: " + file.getOriginalFilename());
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed");
+        }
     }
 }
