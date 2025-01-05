@@ -44,7 +44,7 @@ public class ActionsController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed" + e);
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("OK");
+       
     }
     
     @RequestMapping("/upload")
@@ -67,7 +67,7 @@ public class ActionsController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed"+e);
         }
-
+ return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("OK");
     }
 
     @GetMapping("/files/download/{filename}")
