@@ -68,4 +68,17 @@ public class ActionsController {
         }
 
     }
+
+    @GetMapping("/download/{filename}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable String filename) {
+        try {
+            Path path = Paths.get(System.getProperty("user.dir") + File.separator +  "view" +  File.separator + "index.html");
+            byte[] data = Files.readAllBytes(path);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename);
+            return new ResponseEntity<>(data, headers, HttpStatus.OK);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
 }
